@@ -1,4 +1,4 @@
-﻿import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
 import { CreateCheckoutSessionDto } from './dto/create-checkout-session.dto';
 import { PaymentOrdersRepository } from './payment-orders.repository';
@@ -16,7 +16,8 @@ export class PaymentsService {
     const plan = PLANS[dto.planCode];
     const reference = `SV-${randomUUID().replaceAll('-', '')}`;
     const expirationTime = new Date(Date.now() + 30 * 60 * 1000).toISOString();
-    const redirectUrl = this.wompi.getRedirectUrl();
+    const redirectUrl = new URL(this.wompi.getRedirectUrl());
+    redirectUrl.searchParams.set('reference', reference);
 
     await this.orders.create({
       reference,
@@ -36,7 +37,7 @@ export class PaymentsService {
         reference,
         'signature:integrity': this.wompi.createCheckoutSignature(reference, plan.amountInCents, plan.currency, expirationTime),
         'expiration-time': expirationTime,
-        'redirect-url': redirectUrl,
+        'redirect-url': redirectUrl.toString(),
         'customer-data:email': dto.email.toLowerCase(),
       },
     };
@@ -69,6 +70,7 @@ export class PaymentsService {
       reference: order.reference,
       status: order.status,
       membershipExpiresAt: order.membership_expires_at,
+      accessGranted: order.status === 'APPROVED' && !!order.membership_expires_at && order.membership_expires_at > new Date(),
     };
   }
 }
