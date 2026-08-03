@@ -1,6 +1,6 @@
 ﻿import { Body, Controller, Headers, HttpCode, Post } from '@nestjs/common';
 import { SkipThrottle } from '@nestjs/throttler';
-import { WompiWebhookEvent } from './payments.types';
+import type { WompiWebhookEvent } from './payments.types';
 import { PaymentsService } from './payments.service';
 import { WompiService } from './wompi.service';
 
@@ -22,4 +22,5 @@ export class WompiWebhookController {
     return { received: true };
   }
 }
+
 
