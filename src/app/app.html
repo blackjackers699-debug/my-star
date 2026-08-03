@@ -1,0 +1,71 @@
+﻿@if (!ageConfirmed()) {
+  <section class="age-gate" aria-labelledby="age-title">
+    <video class="gate-video" src="/media/sofia-villa/videos/video1.mp4" poster="/media/sofia-villa/photos/image0.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+    <div class="gate-noise"></div>
+    <div class="gate-panel">
+      <p class="gate-kicker">SOFÍA VILLA · CLUB PRIVADO</p>
+      <div class="gate-mark">SV</div>
+      <p class="gate-overline">Acceso reservado</p>
+      <h1 id="age-title">Este espacio<br />es <em>solo para adultos.</em></h1>
+      <p class="gate-copy">Al continuar confirmás que tenés 18 años o más y aceptás ingresar al club de Sofía Villa.</p>
+      <button type="button" class="enter-button" (click)="ageConfirmed.set(true)">Tengo +18 <span>→</span></button>
+      <a class="gate-exit" href="https://www.google.com">No, salir del sitio</a>
+    </div>
+    <p class="gate-corner">MEDELLÍN · COLOMBIA <span>✦</span> 18+ ONLY</p>
+  </section>
+}
+
+<div class="site">
+  <header class="header layout">
+    <a class="wordmark" href="#inicio" aria-label="Sofía Villa, inicio"><i>SV</i><span>SOFÍA<br />VILLA</span></a>
+    <nav aria-label="Navegación principal"><a href="#feed">FEED</a><a href="#vip">VIP</a><a href="#about">SOBRE MÍ</a></nav>
+    <a class="join-mini" href="#vip"><b>●</b> UNIRME</a>
+  </header>
+
+  <main id="inicio">
+    <section class="hero layout">
+      <div class="hero-copy">
+        <p class="micro-title"><i></i> EL CLUB PRIVADO DE SOFÍA VILLA</p>
+        <h2>No es para mirar<br />de <em>lejos.</em></h2>
+        <p class="hero-text">Sesiones personales, videos nuevos y una Sofía mucho más cercana. Entrá al club privado que convierte cada visita en algo que querés repetir.</p>
+        <div class="hero-offer"><strong>US$3.99</strong><span>PRECIO DE LANZAMIENTO · 30 DÍAS</span><small>COBRO LOCAL: $13.900 COP</small></div><div class="hero-ctas"><a href="#vip" class="cta">DESBLOQUEAR ACCESO <span>↗</span></a><a href="#feed" class="watch-link"><b>▶</b> VER EL ADELANTO</a></div>
+        <div class="member-line"><div class="member-pics"><span>R</span><span>L</span><span>N</span></div><p><strong>MIEMBROS EN LÍNEA</strong><br />El acceso se siente mejor de cerca.</p></div>
+      </div>
+      <div class="hero-art" aria-label="Espacio para foto principal de Sofía Villa">
+        <div class="hero-grain"></div><span class="hero-count">01 / 03</span><span class="hero-tag">NUEVO<br />ESTRENO</span>
+        <div class="hero-photo"><video src="/media/sofia-villa/videos/video1.mp4" autoplay muted loop playsinline preload="auto" aria-label="Video de portada de Sofía Villa"></video></div>
+        <div class="hero-name">SOFÍA VILLA <span>✦</span></div>
+        <p class="portrait-caption">FOTO DESTACADA<br />PARA MIEMBROS</p>
+      </div>
+    </section>
+
+    <section id="feed" class="feed-section layout">
+      <div class="section-top"><div><p class="micro-title"><i></i> LO ÚLTIMO DEL CLUB</p><h2>Un adelanto<br />de lo que <em>te espera.</em></h2></div><a href="#vip" class="circle-arrow" aria-label="Ver todo el contenido">↗</a></div>
+      <div class="content-grid">
+        <article class="content-card tall-card"><span class="badge">BLOQUEADO</span><div class="card-visual visual-one"><img src="/media/sofia-villa/photos/image1.jpg" alt="Vista previa de Sofía Villa" loading="lazy" /></div><div class="card-info"><p>FOTOS PRIVADAS · 12 NUEVAS</p><h3>Sin prisas,<br /><em>sin filtros.</em></h3><span>DESBLOQUEAR →</span></div></article>
+        <article class="content-card short-card"><span class="badge hot">NUEVO</span><div class="card-visual visual-two"><img src="/media/sofia-villa/photos/image2.jpg" alt="Vista previa privada de Sofía Villa" loading="lazy" /></div><div class="card-info"><p>VIDEO EXCLUSIVO</p><h3>Después<br />de medianoche.</h3><span>VER ADELANTO →</span></div></article>
+        <article class="content-card tall-card deep-card"><span class="badge">SOLO VIP</span><div class="card-visual visual-three"><img src="/media/sofia-villa/photos/image5.jpg" alt="Vista previa exclusiva de Sofía Villa" loading="lazy" /></div><div class="card-info"><p>MENSAJE PERSONAL</p><h3>Una nota<br />para <em>vos.</em></h3><span>ENTRAR AL CLUB →</span></div></article>
+      </div>
+    </section>
+    <section id="about" class="manifesto">
+      <div class="manifesto-orbit"></div><p class="micro-title"><i></i> NO ES PARA TODOS</p><blockquote>“No me interesa<br />que me mires.<br />Me interesa que<br /><em>no puedas dejar de hacerlo.</em>”</blockquote><p class="quote-by">— SOFÍA VILLA</p>
+    </section>
+
+    <section id="vip" class="vip-section layout"><video class="vip-background" src="/media/sofia-villa/videos/video1.mp4" poster="/media/sofia-villa/photos/image3.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      <div class="vip-intro"><p class="micro-title"><i></i> ACCESO SIN CENSURA</p><h2>Tu llave al<br />lado <em>prohibido.</em></h2><p>Contenido exclusivo, estrenos privados y una conexión mucho más personal con Sofía. Sin algoritmos. Sin interrupciones.</p></div>
+      <form class="pricing-card" (submit)="startCheckout($event, checkoutEmail.value)"><p class="vip-label">MEMBRESÍA VIP</p><div class="price price-launch"><span>US$</span>3<small>.99<br />30 DÍAS</small></div><p class="cop-charge">COBRO LOCAL: $13.900 COP</p><ul><li>Sesiones nuevas para miembros</li><li>Pagá fácil con Nequi, PSE o tarjeta*</li><li>Videos y fotos de estreno antes que nadie</li><li>Renová solo si querés continuar</li></ul><label class="checkout-label" for="checkout-email">Tu correo para activar el acceso</label><input #checkoutEmail class="checkout-email" id="checkout-email" type="email" autocomplete="email" placeholder="tu@correo.com" required /><button class="vip-button" type="submit" [disabled]="checkoutState() === 'loading'">@if (checkoutState() === 'loading') { REDIRIGIENDO AL PAGO... } @else { QUIERO ACCESO VIP <span>→</span> }</button>@if (checkoutState() === 'error') { <p class="checkout-error">{{ checkoutError() }}</p> }<p class="safe-note">PAGO SEGURO · *SEGÚN LOS MÉTODOS HABILITADOS POR EL COMERCIO</p></form>
+    </section>
+  </main>
+
+  <footer class="footer layout"><a class="wordmark" href="#inicio"><i>SV</i><span>SOFÍA<br />VILLA</span></a><p>© 2026 SOFÍA VILLA · SOLO PARA MAYORES DE 18 AÑOS</p><div><a href="#inicio">IG</a><a href="#inicio">TT</a><a href="#inicio">X</a></div></footer>
+</div>
+
+
+
+
+
+
+
+
+
+
