@@ -1,5 +1,7 @@
 ﻿import { Component, signal } from '@angular/core';
 
+const API_BASE_URL = 'https://my-star-1bb1.onrender.com';
+
 interface CheckoutSession {
   checkoutUrl: string;
   fields: Record<string, string>;
@@ -22,7 +24,7 @@ export class App {
     this.checkoutState.set('loading');
 
     try {
-      const response = await fetch('/api/payments/checkout-sessions', {
+      const response = await fetch(API_BASE_URL + '/api/payments/checkout-sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, planCode: 'vip-monthly' }),
